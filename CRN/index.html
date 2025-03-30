@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: none;
+            text-align: left;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Search Case by CRN Number</h2>
+    <input type="text" id="crnInput" placeholder="Enter CRN Number">
+    <button onclick="searchCase()">Search</button>
+    <div id="result"></div>
+
+    <script>
+        let casesData = [];
+
+        // Load JSON data
+        fetch('https://raw.githubusercontent.com/omkarpatole21/3/refs/heads/main/case.json')
+            .then(response => response.json())
+            .then(data => { casesData = data; })
+            .catch(error => console.error('Error loading JSON:', error));
+
+        function searchCase() {
+            const crnNumber = document.getElementById('crnInput').value.trim();
+            const caseDetail = casesData.find(caseItem => caseItem["CRN number"] === crnNumber);
+            
+            const resultDiv = document.getElementById('result');
+            if (caseDetail) {
+                resultDiv.innerHTML = `<h3>Case Details</h3>` +
+                    `<p><strong>Case No:</strong> ${caseDetail.case_no}</p>` +
+                    `<p><strong>Court Name:</strong> ${caseDetail.court_name}</p>` +
+                    `<p><strong>Date of Filing:</strong> ${caseDetail.date_of_filing}</p>` +
+                    `<p><strong>District:</strong> ${caseDetail.district_name}</p>` +
+                    `<p><strong>State:</strong> ${caseDetail.state_name}</p>` +
+                    `<p><strong>Disposition:</strong> ${caseDetail.disp_name}</p>`;
+                resultDiv.style.display = 'block';
+            } else {
+                resultDiv.innerHTML = '<p style="color: red;">Case not found.</p>';
+                resultDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
