@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vakil-GPT</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <header>
+        <img src="logo.jpeg" alt="Vakil-GPT Logo" class="logo">
+        <h1>Welcome to Vakil-GPT Dashboard</h1>
+    </header>
+
+    <br>
+    <div class="slogan">📜 24/7 Legal Assistance – Get expert legal help anytime, anywhere.</div>
+    <div class="slogan">🔍 Search Your Case Details – Track your case progress with ease.</div>
+    <div class="slogan">⚖️ Hire a Lawyer Online – Connect with top attorneys instantly.</div>
+    
+    <div class="container">
+        <div class="card" onclick="navigateTo('C:/Users/lenovo/Desktop/law-gpt/Chatbot/chatbot.html')">
+            <img src="vakil-gpt.jpeg" alt="Chat with me" style="height: 180px;">
+            <h2>Chat with me</h2>
+        </div>
+        <div class="card" onclick="navigateTo('C:/Users/lenovo/Desktop/law-gpt/CRN/index.html')">
+            <img src="searching-case.jpeg" alt="Search Case Details" style="height: 170px;">
+            <h2>Search your case details by CRN number</h2>
+        </div>
+        <div class="card" onclick="navigateTo('http://localhost:8050/home')">
+            <img src="lawyer.png" alt="Hire a Lawyer" style="height: 180px;">
+            <h2>Hire a lawyer</h2>
+        </div>
+    </div>
+<br>
+<br>
+
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Vakil-GPT. All rights reserved.</p>
+    </footer>
+</body>
+</html>
